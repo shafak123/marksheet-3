@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<center>
+    <div id="create_area">
+    <h3>Create Students Marksheet</h3>
+    <form action="/create/" method="POST">
+        {% csrf_token %}
+        <table>
+        {{create_marksheet.as_table}}
+        </table>
+        <input type="submit" value="Create Marksheet" class="btn btn-success">
+
+    </form>
+    </div>
+</center>
+    
+{% endblock %}

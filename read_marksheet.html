@@ -1,0 +1,144 @@
+{% extends 'index.html' %}
+
+{% block main %}
+{% load static %}
+
+
+{% for read in read_marksheet %}
+
+    <div class="container" id="marksheet_area">
+
+        <div class="row">
+            <h4 style="text-align: center;"> Maharana Pratap High Secondary School Mandideep Dictt Raisen Madhya Pradesh Board </h4> <br> <br>
+            
+            <div class="row" style="text-align: center;">
+
+                <div class="col-6">
+                    <h5>School Code : {{read.school_code}} </h5>
+                </div> 
+
+    
+                <div class="col-6">
+                    <h5>Regular/Private: {{read.regular_or_private}}</h5>
+                </div>
+        
+    
+            </div> <br> <br> <br>
+
+            <div class="col-10" style="text-transform:capitalize;">
+                <h5> Name : {{read.student_name}}</h5>
+                <h5> Father Name : {{read.father_name}} </h5>
+                <h5> Mother Name : {{read.mother_name}} </h5>
+                <h5> Roll Number : {{read.roll_number}} </h5>
+            </div>
+
+            <div class="col-2">
+                <img src="{% static 'images/img.jpg' %}" alt="Students_images" id="img">
+            </div>
+        </div> <br>
+
+        
+            <div class="row" style="text-align: center;">
+                <div class="col-6">
+                    <h5>Section : {{read.section}} </h5>
+                </div> 
+        
+                <div class="col-6">
+                    <h5>Date of Birht: {{read.data_of_birth}}</h5>
+                </div>
+            </div> <br> <br>
+        
+     <center>
+        <div class="row">
+            <div class="col"> 
+                <h5>Subject Name :</h5> <br>
+                <p>Hindi</p>
+                <p>Maths</p>
+                <p>English</p>
+                <p>Science</p>
+                <p>Sanskrit</p>
+                <p>So Science</p>
+            </div>
+
+            <div class="col">
+                <h5>Subject Code :</h5> <br>
+                <p>H001</p>
+                <p>M002</p>
+                <p>E003</p>
+                <p>Sa004</p>
+                <p>Sc005</p>
+                <p>So006</p>
+            </div>
+
+            <div class="col">
+                <h5>Minimum Marks :</h5> <br>
+                <p>33</p>
+                <p>33</p>
+                <p>33</p>
+                <p>33</p>
+                <p>33</p>
+                <p>33</p>
+
+                
+            </div>
+            
+            <div class="col">
+                <h5>Maximum Marks :</h5> <br>
+                <p>100</p>
+                <p>100</p>
+                <p>100</p>
+                <p>100</p>
+                <p>100</p>
+                <p>100</p>
+
+            </div>
+            
+            <div class="col">
+                <h5>Obtain Marks :</h5> <br>
+                <p>{{read.hindi}}</p>
+                <p>{{read.english}}</p>
+                <p>{{read.maths}}</p>
+                <p>{{read.so_science}}</p>
+                <p>{{read.sanskrit}}</p>
+                <p>{{read.science}}</p>
+            </div>
+        </div> <br>
+    </center>
+
+    <div class="row">
+
+        <div class="col-9">
+            <h5>Total : 540 </h5>
+        </div>
+        
+        <div class="col-3">
+            <h5> Division : Pass in First Division </h5>
+        </div>
+
+        <div class="col-12">
+            <h5>Grade : A++ </h5>
+        </div>
+
+        <div class="col-9">
+            <h5> Persentages : 90% </h5>
+        </div>
+
+        <div class="col-3" align="center">
+            <h5> Principal Signature </h5>
+            <span style="color:red;">(zoya )</span> 
+        </div>
+
+        <center>
+            <form action="{% url 'delete' read.id %}" method="POST"> {% csrf_token %} 
+                <br>
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </center>
+
+    </div>
+</div> <br> <br>
+{% endfor %}
+
+
+    
+{% endblock %}
